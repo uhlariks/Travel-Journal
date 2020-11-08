@@ -1,0 +1,42 @@
+[
+  {
+    "country": "England",
+    "city": "London",
+    "date": 2016,
+    "rating": 5,
+    "review": "",
+    "visits": 1
+  },
+  {
+    "country": "France",
+    "city": "Paris",
+    "date": 2016,
+    "rating": 3,
+    "review": "Rainy and cold the whole time",
+    "visits": 1
+  },
+  {
+    "country": "Netherlands",
+    "city": "Amsterdam",
+    "date": 2016,
+    "rating": 5,
+    "review": "Loved every second",
+    "visits": 1
+  },
+  {
+    "country": "Italy",
+    "city": "Florence",
+    "date": 2016,
+    "rating": 4,
+    "review": "",
+    "visits": 1
+  },
+  {
+    "country": "Spain",
+    "city": "Barcelona",
+    "date": 2018,
+    "rating": 4,
+    "review": "",
+    "visits": 2
+  }
+]
