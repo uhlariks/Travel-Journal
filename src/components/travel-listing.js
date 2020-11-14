@@ -18,15 +18,15 @@ function TravelListing() {
       setTravel(docs);
     };
     const onError = (error) => {
-      setErrorMessage("There was a problem loading your movie ratings. Please try again.");
+      setErrorMessage("There was a problem loading your ratings. Please try again.");
       console.error(error);
     };
-    const unsubscribe = travelCollection.orderBy("date", "desc").onSnapshot(onNext, onError);
+    const unsubscribe = travelCollection.orderBy("yearVisited", "desc").onSnapshot(onNext, onError);
     return unsubscribe;
   }, []);
 
   return (
-    <div className="movies-container">
+    <div className="travel-container">
       <h1>My Travel Journal</h1>
       {isLoading && (
         <LoadingSpinner
@@ -36,7 +36,7 @@ function TravelListing() {
         />
       )}
       {errorMessage && <ErrorMessage displayAsCard>{errorMessage}</ErrorMessage>}
-      <ul className="movie-list">
+      <ul className="travel-list">
         {travel.map((travelDoc) => {
           const travelId = travelDoc.id;
           const travelData = travelDoc.data();

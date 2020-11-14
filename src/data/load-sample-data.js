@@ -5,15 +5,16 @@ async function loadSampleData() {
   sampleData.map(addTravel);
 }
 
-async function addTravel({ country, city, date, rating, review, visits }) {
+async function addTravel({ country, city, monthVisited, yearVisited, rating, review, visits }) {
   try {
-    const data = { country, city, date, rating, review, visits };
+    const data = { country, city, monthVisited, yearVisited, rating, review, visits };
 
     const snapshot = await db
       .collection("travel")
       .where("country", "==", country)
       .where("city", "==", city)
-      .where("date", "==", date)
+      .where("monthVisited", "==", monthVisited)
+      .where("yearVisited", "===", yearVisited)
       .where("rating", "==", rating)
       .where("review", "==", review)
       .where("visits", "==", visits)

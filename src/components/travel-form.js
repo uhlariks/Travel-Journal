@@ -7,16 +7,16 @@ function TravelForm(props) {
 
   if (initialState.country === undefined) initialState.country = "";
   if (initialState.city === undefined) initialState.city = "";
-  if (initialState.date === undefined) initialState.date = 2020;
-  if (initialState.experiences === undefined) initialState.experiences = "";
+  if (initialState.monthVisited === undefined) initialState.monthVisited = "";
+  if (initialState.yearVisited === undefined) initialState.yearVisited = 2020;
   if (initialState.rating === undefined) initialState.rating = 5;
   if (initialState.review === undefined) initialState.review = "";
-  if (initialState.visits === undefined) initialState.visits = "";
+  if (initialState.visits === undefined) initialState.visits = 0;
 
   const [country, setCountry] = useState(initialState.country);
   const [city, setCity] = useState(initialState.city);
-  const [date, setDate] = useState(initialState.date);
-  const [experiences, setExperiences] = useState(initialState.experiences);
+  const [monthVisited, setMonthVisited] = useState(initialState.monthVisited);
+  const [yearVisited, setYearVisited] = useState(initialState.yearVisited);
   const [rating, setRating] = useState(initialState.rating);
   const [review, setReview] = useState(initialState.review);
   const [visits, setVisits] = useState(initialState.visits);
@@ -28,11 +28,11 @@ function TravelForm(props) {
   const onCityChange = (event) => {
     setCity(event.target.value);
   };
-  const onDateChange = (event) => {
-    setDate(event.target.value);
+  const onMonthVisitedChange = (event) => {
+    setMonthVisited(event.target.value);
   };
-  const onExperiencesChange = (event) => {
-    setExperiences(event.target.value);
+  const onYearVisitedChange = (event) => {
+    setYearVisited(event.target.value);
   };
   const onRatingChange = (event) => {
     setRating(event.target.value);
@@ -46,46 +46,63 @@ function TravelForm(props) {
 
   const onTravelSumbit = async (event) => {
     event.preventDefault();
-    onSubmit(country, city, date, experiences, rating, review, visits);
+
+    onSubmit(country, city, monthVisited, yearVisited, rating, review, visits);
   };
 
   return (
-    <form className="movie-form" onSubmit={onTravelSumbit}>
-      <h2 className="movie-form__title">Travel Details</h2>
+    <form className="travel-form" onSubmit={onTravelSumbit}>
+      <h2 className="travel-form__title">Travel Details</h2>
+      <h4 className="travel-form__instructions">Add details below, then click save.</h4>
       {message && <p className="movie-form__message">{message}</p>}
       {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
-      <fieldset className="movie-form__controls" disabled={isSaving}>
-        <label className="movie-form__label">Country:</label>
+      <fieldset className="travel-form__controls" disabled={isSaving}>
+        <label className="travel-form__label">Country:</label>
         <input
-          className="movie-form__input"
+          className="travel-form__input"
           type="text"
           value={country}
           onChange={onCountryChange}
         />
-        <label className="movie-form__label">City:</label>
-        <input className="movie-form__input" type="text" value={city} onChange={onCityChange} />
-        <label className="movie-form__label">Date:</label>
-        <input className="movie-form__input" type="text" value={date} onChange={onDateChange} />
-        <label className="movie-form__label">Experiences:</label>
+        <label className="travel-form__label">City:</label>
+        <input className="travel-form__input" type="text" value={city} onChange={onCityChange} />
+        <label className="travel-form__label">Month:</label>
         <input
-          className="movie-form__input"
+          className="travel-form__input"
           type="text"
-          value={experiences}
-          onChange={onExperiencesChange}
+          value={monthVisited}
+          onChange={onMonthVisitedChange}
         />
-        <label className="movie-form__label">Rating:</label>
+        <label className="travel-form__label">Year:</label>
         <input
-          className="movie-form__input"
+          className="travel-form__input"
+          type="text"
+          value={yearVisited}
+          onChange={onYearVisitedChange}
+        />
+        <label className="travel-form__label">Rating:</label>
+        <input
+          className="travel-form__input"
           type="number"
           value={rating}
           onChange={onRatingChange}
         />
-        <label className="movie-form__label">Review:</label>
-        <input className="movie-form__input" type="text" value={review} onChange={onReviewChange} />
-        <label className="movie-form__label">Number of Visits:</label>
-        <input className="movie-form__input" type="text" value={visits} onChange={onVisitsChange} />
+        <label className="travel-form__label">Review:</label>
         <input
-          className="movie-form__submit"
+          className="travel-form__input"
+          type="text"
+          value={review}
+          onChange={onReviewChange}
+        />
+        <label className="travel-form__label">Number of Visits:</label>
+        <input
+          className="travel-form__input"
+          type="text"
+          value={visits}
+          onChange={onVisitsChange}
+        />
+        <input
+          className="travel-form__submit"
           type="submit"
           value={isSaving ? "Saving..." : "Save"}
         />

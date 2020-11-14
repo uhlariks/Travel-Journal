@@ -7,17 +7,23 @@ function AddTravel() {
   const [isSaving, setIsSaving] = useState(false);
   const [formMessage, setFormMessage] = useState("");
 
-  const onTravelSumbit = async (country, city, date, experiences, rating, review, visits) => {
-    // alert(`You want to add ${title}, ${rating}, ${releaseYear}.`);
-
+  const onTravelSumbit = async (
+    country,
+    city,
+    monthVisited,
+    yearVisited,
+    rating,
+    review,
+    visits
+  ) => {
     setIsSaving(true);
     setFormMessage("");
     try {
       await travelCollection.add({
         country,
         city,
-        date,
-        experiences,
+        monthVisited,
+        yearVisited,
         rating,
         review,
         visits,

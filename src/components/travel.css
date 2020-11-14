@@ -1,4 +1,4 @@
-.movie {
+.travel {
   padding: 1rem;
   width: 300px;
   min-height: 175px;
@@ -11,7 +11,7 @@
   justify-content: space-between;
 }
 
-.movie__button {
+.travel__button {
   display: block;
   padding: 0.25rem;
   border-radius: 50%;
@@ -22,30 +22,30 @@
   outline: none;
 }
 
-.movie__button:disabled {
+.travel__button:disabled {
   opacity: 0.6;
 }
 
-.movie__button:focus {
+.travel__button:focus {
   color: white;
   background-color: #295867;
 }
 
-.movie__button:hover {
+.travel__button:hover {
   color: white;
   background-color: #295867;
 }
 
-.movie__button:active {
+.travel__button:active {
   color: white;
   background-color: #295867;
 }
 
-.movie__button svg {
+.travel__button svg {
   font-size: 1.25rem;
 }
 
-.movie > * {
+.travel > * {
   margin-bottom: 0.25rem;
 }
 
@@ -53,7 +53,7 @@
   font-weight: normal;
 }
 
-.movie__title {
+.travel__title {
   font-weight: bold;
 }
 

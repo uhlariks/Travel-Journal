@@ -20,7 +20,7 @@ function EditTravel(props) {
         const travelSnapshot = await travelCollection.doc(id).get();
 
         if (!travelSnapshot.exists) {
-          throw new Error("No such movie exists!");
+          throw new Error("Unexpected Error!");
         }
 
         const data = travelSnapshot.data();
@@ -34,9 +34,15 @@ function EditTravel(props) {
     getTravel();
   }, [id]);
 
-  const onTravelSubmit = async (country, city, date, experiences, rating, review, visits) => {
-    //alert(`${title} ${rating} ${releaseYear}`);
-
+  const onTravelSubmit = async (
+    country,
+    city,
+    monthVisited,
+    yearVisited,
+    rating,
+    review,
+    visits
+  ) => {
     setIsSaving(true);
     setFormMessage("");
 
@@ -44,14 +50,15 @@ function EditTravel(props) {
       await travelCollection.doc(id).set({
         country,
         city,
-        date,
+        monthVisited,
+        yearVisited,
         rating,
         review,
         visits,
       });
       setFormMessage("Saved Successfully!");
     } catch (error) {
-      setFormMessage("Something went wrong editing this movie. Please try again!");
+      setFormMessage("Something went wrong. Please try again!");
       console.error(error);
     }
     setIsSaving(false);
